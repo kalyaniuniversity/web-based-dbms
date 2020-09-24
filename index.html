@@ -3,6 +3,7 @@
     <head>
         <title>Web Based DBMS</title>
         <link rel="stylesheet" href="style.css" />
+        <script type="text/javascript" src="index.js"></script>
         <style>
             h1 {
                 background-color: orange;
@@ -16,6 +17,20 @@
         <h4 style="background-color: #556655;">Header 4</h4>
         <h5 style="background-color: rgb(255, 76, 198);">Header 5</h5>
         <h6 style="background-color: rgba(255, 76, 198, 0.5);">Header 6</h6>
+
+        <button onclick="clickMe()">Click Me!</button>
+
+        <div>
+            <span>Simple Calculator</span>
+            <div>
+                <span>Number 1</span>
+                <input id="num1" type="number" />
+                <span>Number 2</span>
+                <input id="num2" type="number" />
+                <button onclick="add()">Add!</button>
+            </div>
+            <span id="sumResult" class="result"></span>
+        </div>
 
         <h7>This header does not exist</h7>
 

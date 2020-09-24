@@ -17,3 +17,8 @@ h1 {
     background-color: indigo;
     padding: 2px;
 }
+
+.result {
+    margin: 20px;
+    font-size: 2em;
+}
