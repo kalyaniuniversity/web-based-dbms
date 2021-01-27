@@ -1,0 +1,24 @@
+browser ---- (http) ---> hardware server (connected to the internet)
+ |                           |
+ |                           |
+ |                           |
+  -------------------- software server (NodeJS): listens to requests and responds
+                                                    accordingly
+                            |
+                            |
+                            |--------> DBMS (MySQL)
+                    
+
+NODEJS
+
+JavaScript Runtime
+
+fs module -> file system / file sync module within NodeJS
+
+CORE MODULES
+
+http
+https
+fs
+path
+os

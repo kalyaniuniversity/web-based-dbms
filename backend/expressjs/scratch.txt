@@ -1,0 +1,29 @@
+client3
+|
+server -- client2
+|
+client1
+
+NPM -> Node Package Manager
+
+/ -> root url
+
+could not GET /
+
+REQUESTS -> GET, POST, PUT, DELETE
+
+/user/1
+/user/2
+/user/3
+...
+
+/user/{id} -> dynamic URL
+
+when a request came to the server
+    -> the server rendered the UI depending on the request
+    -> sent this UI over network to the client
+    -> client browser showed this UI
+
+templating engine
+
+html template <- data ====> html file
