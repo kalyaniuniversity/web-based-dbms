@@ -1,7 +1,18 @@
 const express = require('express');
 const path = require('path');
+const mysql = require('mysql');
 const body_parser = require('body-parser');
 const app = express();
+
+const db = mysql.createConnection({
+    host: 'localhost',
+    port: '3308', // by default 3306
+    user: 'root',
+    password: 'password',
+    database: 'nodejs'
+});
+
+db.connect();
 
 app.use(body_parser.json());
 app.use(body_parser.urlencoded({
@@ -80,6 +91,74 @@ app.post('/post/contact', (request, response) => {
         firstname: firstname,
         lastname: lastname
     });
+});
+
+app.get('/testdb', (request, response) => {
+
+    console.log('testdb');
+
+    let res = null;
+
+    db.query(
+        'SELECT 2 + 2 AS result',
+        (error, results, fields) => {
+            if (error) {
+                res = 'An error occured!';
+                response.send(res);
+            } else {
+                res = results[0].result;
+                response.send(String(res));
+            }
+        }
+    );
+});
+
+app.get('/contacts', (request, response) => {
+
+    const statement = 'select * from contact';
+
+    db.query(
+        statement,
+        (error, results, fields) => {
+            if (error) {
+                response.send('An error occured!');
+                throw error;
+            } else {
+                console.log(results);
+
+                let res = '';
+
+                results.forEach(function (row, index) {
+                    res += row.name + ' : ' + row.contactnumber + '<br/>';
+                });
+
+                response.send(res);
+            }
+        }
+    );
+});
+
+app.get('/testinsert', (request, response) => {
+
+    const newContact = {
+        name: 'Kejriwal',
+        email: 'muffler@gmail.com',
+        contactnumber: '7291231239'
+    };
+
+    const statement = 'insert into contact set ?';
+
+    db.query(
+        statement,
+        newContact,
+        (error, results, fields) => {
+            if (error) response.send('an error occured');
+            else {
+                console.log(results);
+                response.send('successful!');
+            }
+        }
+    );
 });
 
 // the server starts over here
